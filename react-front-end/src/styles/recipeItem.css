@@ -1,0 +1,7 @@
+.recipe-item img {
+    max-width: 100%;
+}
+
+.recipe-item .special-text {
+    font-size: .8rem;
+}
