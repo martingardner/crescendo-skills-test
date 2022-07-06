@@ -1,8 +1,8 @@
 import {useState} from 'react';
 
-import { IMAGE_path } from '../api/recipe';
+import { IMAGE_path } from '../../api/recipe';
 
-import '../styles/recipeItem.css';
+import '../../styles/recipeItem.css';
 
 const RecipeItem = ({data, special}) => {
 
@@ -37,8 +37,8 @@ const RecipeItem = ({data, special}) => {
             <li className="list-group-item" key={`direction-list-group-item-${d.instructions}-${index}`}>
                 <div>
                     {d.instructions}
-                    {optionalText}
-                </div>
+                    <span className="text-success fw-bold special-text">{optionalText}</span>
+                </div>                
             </li>
         )
     })
@@ -49,7 +49,7 @@ const RecipeItem = ({data, special}) => {
                 <img alt={data.title} aria-hidden="true" src={`${IMAGE_path}${data.images.full}`} />
                 <h2 className="text-center">{data.title}</h2>
                 
-                <div className="button-row">
+                <div className="button-row mb-1">
                     <button 
                         className="btn btn-primary" 
                         onClick={ ()=> setExpandedIngredients( ()=> !getExpandedIngredients)}>

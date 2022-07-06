@@ -1,11 +1,11 @@
 import {useEffect, useState} from 'react';
 
-import Loader from './Loader';
+import Loader from '../Loader';
 import RecipeItem from './RecipeItem';
 
-import { API_recipe , SPECIAL_recipe } from '../api/recipe';
+import { API_recipe , SPECIAL_recipe } from '../../api/recipe';
 
-const RecipeList = () => {
+const RecipeList = ({switchPage}) => {
 
     //const [getCallFlush, setCallFlush] = useState(false); //in case need to flush and redo the recipe call
     const [getRecipeData, setRecipeData] = useState([]);
@@ -48,10 +48,22 @@ const RecipeList = () => {
     });
 
     return (
-        <section className="row">            
-            { getRecipeData.length < 1 && <Loader></Loader> }
-            { getRecipeData.length > 0 && getRecipeDataRows }     
-        </section>
+        <>
+            <section className="row">
+                <div className="col-sm-12 col-lg-3 mb-2">                
+                    <button
+                        className="btn btn-primary "
+                        onClick={ ()=> switchPage()}
+                    >
+                        Switch to Specials Page
+                    </button>
+                </div>
+            </section>
+            <section className="row">            
+                { getRecipeData.length < 1 && <Loader></Loader> }
+                { getRecipeData.length > 0 && getRecipeDataRows }     
+            </section>
+        </>
     )
 }
 
